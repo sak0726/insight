@@ -54,6 +54,9 @@ def handler(job):
 
     # 3. 推論実行（GPU）
     try:
+        print("IMAGE COUNT:", len(images_np))
+        print("IMAGE SIZE:", pil_image.size)
+        print("NP SHAPE:", np.array(pil_image).shape)
         vectors = clip.encode_batch(images_np)
     except Exception as e:
         return {"error": f"Inference failed: {str(e)}"}
